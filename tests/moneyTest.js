@@ -16,9 +16,9 @@ if (formatCurrency(0) === '0.00') {
   console.log('Works with 0: failed');
 }
 
-//Rounds up to the nearesr cent
+//Rounds up to the nearest cent
 if (formatCurrency(2000.4) === '20.00') {
-  console.log('Rounds up to the nearesr cent: passed');
+  console.log('Rounds up to the nearest cent: passed');
 }else{
-  console.log('v: failed');
+  console.log('Rounds up to the nearest cent: failed');
 }
