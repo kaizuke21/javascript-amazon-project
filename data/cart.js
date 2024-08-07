@@ -1,8 +1,12 @@
 //Cart ArrayIf there is Local Storage
-export let cart = JSON.parse(localStorage.getItem('cart'));
+export let cart;
 
+loadFromStorage();
 
-//Cart Array (Default)
+export function loadFromStorage() {
+  cart = JSON.parse(localStorage.getItem('cart'));
+
+  //Cart Array (Default)
   if (!cart){
     cart = [{
       productId: 'e43638ce-6aa0-4b85-b27f-e1d07eb678c6',
@@ -14,7 +18,7 @@ export let cart = JSON.parse(localStorage.getItem('cart'));
       deliveryOptionId: '2'
     }];
   }
-
+}
 
 //Local Storage
 function saveToStorage() {
