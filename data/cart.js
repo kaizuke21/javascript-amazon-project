@@ -1,4 +1,4 @@
-//Cart ArrayIf there is Local Storage
+//Cart Array - If there is Local Storage
 export let cart;
 
 loadFromStorage();
