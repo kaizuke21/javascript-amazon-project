@@ -62,6 +62,7 @@ export function getProduct(productId) {
     }
   }
 
+  
 
 //We Convert all regular objects to a Product Class
 export const products = [
