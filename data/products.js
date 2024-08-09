@@ -83,10 +83,15 @@ export function loadProductsFetch() {
     });
 
     console.log('Load Products :>');
+    
+  }).catch((error ) => {
+    //Error Handling
+    console.log('Unexpected Error. Please try again later.');
   });
 
   return promise; 
 }
+
 
 // //This is just for practice
 // loadProductsFetch().then(() => {
@@ -98,8 +103,23 @@ export function loadProducts(fun) {
   const xhr = new XMLHttpRequest();
 
   xhr.addEventListener('load', () => {
+    products = JSON.parse(xhr.response).map((productDetails) => {
+      if (productDetails.type === 'clothing') {
+        return new Clothing(productDetails);
+      }
+        return new Product(productDetails);
+    });
+      
+    console.log('Load Products :<');
 
+    fun();
   });
+
+  //Error Handling 
+  xhr.addEventListener('error', (error) => {
+    console.log('Unexpected Error. Please try again later.');
+  });
+
 
   xhr.open('GET', 'https://supersimplebackend.dev/products');
   //xhr.send(); - asynchronous means it will just send the request but it will not wait for a response to come back
