@@ -5,21 +5,40 @@ import { loadCart } from "../data/cart.js";
 //import '../data/cart-class.js'
 // import '../data/backend-practice.js'
 
-//Array of Promises - Revised Promise
-//It's gonna wait all the Promises to 
-//finish before going to the next step
-Promise.all([
-  loadProductsFetch(),
-  new Promise((resolve) => {
+
+//Promise to Async - Revised
+async function loadPage() {
+  
+  await loadProductsFetch();
+
+  const value = await new Promise((resolve) => {
     loadCart(() => {
-      resolve('value2');
+      resolve('value3');
     });
-  })
-]).then((values) => {
-  console.log(values); 
+  });
+
   renderOrderSummary();
   renderPaymentSummary();
-});
+}
+
+loadPage();
+
+
+// //Array of Promises - Revised Promise
+// //It's gonna wait all the Promises to 
+// //finish before going to the next step
+// Promise.all([
+//   loadProductsFetch(),
+//   new Promise((resolve) => {
+//     loadCart(() => {
+//       resolve('value2');
+//     });
+//   })
+// ]).then((values) => {
+//   console.log(values); 
+//   renderOrderSummary();
+//   renderPaymentSummary();
+// });
 
 
 // //Callback to Promise
